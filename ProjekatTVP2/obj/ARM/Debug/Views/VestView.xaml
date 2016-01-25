@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="ProjekatTVP2.Views.VestView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjekatTVP2.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel>
+                <Button x:ConnectionId='1'               >
+                    <SymbolIcon Symbol="Back"/>
+                </Button>
+                <TextBlock Text="{Binding News.Title}"
+                           FontSize="32"
+                           TextWrapping="WrapWholeWords"/>
+                <Image Source="{Binding News.ImagePath}"
+                       MaxHeight="300"
+                       Stretch="UniformToFill"/>
+                <TextBlock Text="{Binding News.Summary}"
+                           TextWrapping="WrapWholeWords"/>
+                <TextBlock Text="{Binding News.NewsType}"
+                           FontSize="12"
+                           Foreground="LightGray"/>
+                <TextBlock Text="{Binding News.PublishedDateTime}"
+                           FontSize="11"
+                           Foreground="DarkGray"/>
+                <StackPanel Margin="0, 20">
+                    <ListView ItemsSource="{Binding Comments}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"
+                                               FontSize="12"
+                                               Foreground="DarkGray"/>
+                                    <TextBlock Text="{Binding Content}"
+                                               TextWrapping="WrapWholeWords"/>
+                                    <TextBlock Text="{Binding PublishDate}"
+                                               FontSize="12"
+                                               Foreground="LightGray"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <TextBox x:ConnectionId='2' Name="ComName" Text="{Binding CommentName, Mode=TwoWay}" PlaceholderText="Ime"/>
+                <TextBox x:ConnectionId='3' Name="ComContent" Height="100" Text="{Binding CommentContent, Mode=TwoWay}" PlaceholderText="Poruka" Margin="0, 20"/>
+                <Button x:ConnectionId='4' Content="Posalji"                    />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
+
